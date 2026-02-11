@@ -119,4 +119,13 @@ if queries_file and missing_file:
     missing_summary = missing.groupby("Folders").size().reset_index(name="Count")
 
     fig_missing = px.bar(
+        missing_summary,
+        x="Folders",
+        y="Count",
+        title="Missing Pages by Folder"
+    )
 
+    st.plotly_chart(fig_missing, use_container_width=True)
+
+else:
+    st.info("Upload both files to start analysis.")
